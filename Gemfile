@@ -15,7 +15,10 @@ gem 'activesupport'
 gem 'activerecord'
 
 gem 'rake'
+#Bcrypt for password protection
 gem 'bcrypt-ruby'
+#Flash for error messages
+gem 'rack-flash3'
 
 gem 'shotgun'
 
