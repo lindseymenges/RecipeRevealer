@@ -1,5 +1,25 @@
 <h2>Welcome back, <%= @user.username %>!</h2>
 <h3>This is your account page.</h3>
+<h4>Here are your current recipes</h4>
+<ul>
+  <% @recipes.each do |recipe| %>
+  <li><a href="/recipe/<%=recipe.id%>"><%= recipe.name %></a></li>
+  <% end %>
+  </ul>
+<a href='/newrecipe'>Click here to add a new recipe</a>
+
+<div class="list_of_recipes">
+
+</div>
+
+<div id="recipe_template" style="display: none;">
+  <div class="recipe">
+  <h2>Recipe Name</h2>
+    <p class="ingredients"></p>
+    <p class="directions"></p>
+    
+  </div>
+</div>
 
 
 <a href='/logout'>Logout</a>

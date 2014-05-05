@@ -31,10 +31,33 @@ end
 get '/account_page/:id' do
   if session[:id].to_s == params[:id].to_s
     @user = User.find(params[:id])
+    @recipes = Recipe.all.select{ |recipe| recipe.user_id == @user.id }
+    p @recipes
     erb :account_page
   else
     redirect '/'
   end
+end
+
+get '/newrecipe' do
+  erb :newrecipe
+end
+
+post '/newrecipe' do
+  @recipe = Recipe.new(params)
+  @recipe.user_id = session[:id]
+  @user = User.find(session[:id])
+  if @recipe.save
+    redirect "/account_page/#{@user.id}"
+  else
+    flash[:errors] = @recipe.errors.messages
+    erb :newrecipe
+  end
+end
+
+get '/recipe/:id' do
+  @recipe = Recipe.find(params[:id])
+  erb :recipepage
 end
 
 get '/signup/newuser' do
