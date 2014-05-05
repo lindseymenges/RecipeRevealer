@@ -6,9 +6,6 @@
         <% if flash[:errors] && flash[:errors][:username] %>
           <%= flash[:errors][:username].first %>
         <% end %><br>
-    Password: <input type='password' name='password' placeholder='Password'>
-      <% if flash[:errors] && flash[:errors][:password] %>
-      <%= flash[:errors][:password].first %>
-      <% end %><br>
+    Password: <input type='password' name='password' placeholder='Password'><br>
     <input type='submit' value='Sign up'>
 </form>
