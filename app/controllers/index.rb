@@ -21,15 +21,23 @@ get '/account_page/:id' do
   end
 end
 
-get '/signup' do
+get '/signup/newuser' do
   erb :signup
 end
 
 post '/signup' do
-  @user = User.create(params)
-  if @user.valid?
+  @user = User.new(params)
+  p '1'
+  if @user.save
+    p '2'
     session[:id] = @user.id
     redirect "/account_page/#{@user.id}"
+  else
+    p '3'
+    flash[:errors] = @user.errors.messages
+    p '4'
+    p flash
+    erb :signup
   end
 end
 

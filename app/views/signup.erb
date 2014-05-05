@@ -1,11 +1,14 @@
+<h1>Create A New Account</h1>
+
 <form action='/signup' method='post'>
-    <input type='text' name='username' placeholder='Username'>
-    <% if flash[:errors] && flash[:errors][:username] %>
-    <%= flash[:errors][:username].first %>
-    <% end %><br>
-    <input type='password' name='password' placeholder='Password'>
-    <% if flash[:errors] && flash[:errors][:password] %>
-    <%= flash[:errors][:password].first %>
-    <% end %><br>
+    Username: <input type='text' name='username' placeholder='Username' 
+      <%= "value='#{@user.username}'" if flash[:errors] %>>
+        <% if flash[:errors] && flash[:errors][:username] %>
+          <%= flash[:errors][:username].first %>
+        <% end %><br>
+    Password: <input type='password' name='password' placeholder='Password'>
+      <% if flash[:errors] && flash[:errors][:password] %>
+      <%= flash[:errors][:password].first %>
+      <% end %><br>
     <input type='submit' value='Sign up'>
 </form>
