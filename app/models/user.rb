@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  # Remember to create a migration!
   has_many :recipes
+  validates :username, presence: {message: "Everyone needs a username! How else is a little ol' computer like me going to know who you are?"}
   validates :username, uniqueness: {message: "Sorry, that name has been taken! But you're so lovely - I'm sure you have a lot of great ideas for usernames. Give it another shot!"}
   validates :password, presence: {message: "You definitely want a password, otherwise I might try to steal your recipes. Just kidding! But really, you'll want a password."}
   
