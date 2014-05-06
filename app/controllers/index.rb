@@ -56,6 +56,8 @@ get '/account_page/:id' do
   if session[:id].to_s == params[:id].to_s
     @user = User.find(params[:id])
     @recipes = Upload.where(user_id: @user.id)
+    @recipe = @recipes.first
+    p @recipe
     erb :account_page
   else
     redirect '/'
@@ -73,10 +75,13 @@ end
 
 post '/uploadrecipe' do
   @user = User.find(session[:id])
-  @uploaded_file = @user.uploads.create :filepath => params[:upload]
+  @uploaded_file = @user.uploads.create :filepath => params[:upload], :name => params[:name]
   @user.save!
 
   redirect '/'
+
+  # "<a href='#{@uploaded_file.filepath}'>#{@uploaded_file.filepath}</a>"
+  # THAT link works - why doesn't it work in a .each loop?
 
   
 end

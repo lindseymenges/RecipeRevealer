@@ -3,6 +3,7 @@ class CreateUploads < ActiveRecord::Migration
     create_table :uploads do |t|
       t.belongs_to :user
       t.string :filepath
+      t.string :name
 
       t.timestamps
     end
