@@ -1,3 +1,4 @@
+# Index Route
 get '/' do
   if session[:id]
     @user = User.find(session[:id])
@@ -8,6 +9,7 @@ get '/' do
 
 end
 
+# Login and Sign Up Routes
 get '/login_or_signup' do 
   erb :login_or_signup
 end
@@ -26,38 +28,6 @@ post '/login' do
   else
     redirect '/login'
   end
-end
-
-get '/account_page/:id' do
-  if session[:id].to_s == params[:id].to_s
-    @user = User.find(params[:id])
-    @recipes = Recipe.all.select{ |recipe| recipe.user_id == @user.id }
-    p @recipes
-    erb :account_page
-  else
-    redirect '/'
-  end
-end
-
-get '/newrecipe' do
-  erb :newrecipe
-end
-
-post '/newrecipe' do
-  @recipe = Recipe.new(params)
-  @recipe.user_id = session[:id]
-  @user = User.find(session[:id])
-  if @recipe.save
-    redirect "/account_page/#{@user.id}"
-  else
-    flash[:errors] = @recipe.errors.messages
-    erb :newrecipe
-  end
-end
-
-get '/recipe/:id' do
-  @recipe = Recipe.find(params[:id])
-  erb :recipepage
 end
 
 get '/signup/newuser' do
@@ -79,5 +49,37 @@ get '/logout' do
   session.clear
   redirect '/'
 end
+
+# Account Page Route
+
+get '/account_page/:id' do
+  if session[:id].to_s == params[:id].to_s
+    @user = User.find(params[:id])
+    @recipes = Upload.where(user_id: @user.id)
+    erb :account_page
+  else
+    redirect '/'
+  end
+end
+
+
+
+
+# Routes for uploading a new recipe
+
+get '/uploadrecipe' do 
+  erb :uploadrecipe
+end
+
+post '/uploadrecipe' do
+  @user = User.find(session[:id])
+  @uploaded_file = @user.uploads.create :filepath => params[:upload]
+  @user.save!
+
+  redirect '/'
+
+  
+end
+
 
 

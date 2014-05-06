@@ -23,6 +23,9 @@ require 'bcrypt'
 
 require 'rack-flash'
 
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
@@ -47,4 +50,17 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
+# Using Flash for validations
 use Rack::Flash, :sweep => true
+
+# Configure CarrierWave
+CarrierWave.configure do |config|
+  if development?
+    config.storage = :file
+    config.root = File.join(APP_ROOT, 'public')
+    config.store_dir = File.join('uploads')
+  else
+    #store on S3 or whatever (look into this for Heroku deployment)
+    raise "Hey you don't know what to do in production yet!"
+  end
+end

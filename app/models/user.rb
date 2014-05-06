@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :recipes
+  has_many :uploads
   validates :username, presence: {message: "Everyone needs a username! How else is a little ol' computer like me going to know who you are?"}
   validates :username, uniqueness: {message: "Sorry, that name has been taken! But you're so lovely - I'm sure you have a lot of great ideas for usernames. Give it another shot!"}
   

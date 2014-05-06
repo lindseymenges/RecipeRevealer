@@ -20,6 +20,9 @@ gem 'bcrypt-ruby'
 #Flash for error messages
 gem 'rack-flash3'
 
+#CarrierWave for file uploads
+gem 'carrierwave'
+
 gem 'shotgun'
 
 group :test do
