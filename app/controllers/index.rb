@@ -86,8 +86,17 @@ end
 
 post '/uploadrecipe' do
   @user = User.find(session[:id])
-  @uploaded_file = @user.uploads.create :filepath => params[:upload], :name => params[:name]
-  @user.save!
+  @uploaded_file = Upload.new(filepath: params[:upload], name: params[:name])
+  @uploaded_file.user_id = @user.id
+  # if @uploaded_file.save
+  #   redirect "/account_page/#{@user.id}"
+  # else
+  #   flash[:errors] = @uploaded_file.errors.messages
+  #   erb :uploadrecipe
+  # end
+
+  # validation for including a recipe name not currently working, will try to get that functional after basic MVP
+  @uploaded_file.save!
 
   redirect '/'
 

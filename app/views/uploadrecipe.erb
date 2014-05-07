@@ -1,11 +1,9 @@
 <h2>Upload a recipe file from your computer</h2>
+<h4>Note: Be SURE to include a recipe name, otherwise your PDF won't save correctly!</h4>
 <form action='/uploadrecipe' enctype="multipart/form-data" method='post'>
-    <input type="text" name="name" placeholder="name of recipe" <%= "value='#{@uploaded_file.name}'" if flash[:errors] %>>
-        <% if flash[:errors] && flash[:errors][:name] %>
-          <%= flash[:errors][:name].first %>
-        <% end %><br>
-    <input type="file" name="upload"><br>
-    <button type="submit">Upload Your Recipe!</button>
+    Recipe Name: <input type="text" name="name" placeholder="name of recipe"><br>
+    Recipe File: <input type="file" name="upload"><br>
+    <input type='submit' value='Upload Your Recipe!'>
 </form>
 
 <a href='/'>Return to Account Page</a>
