@@ -63,8 +63,7 @@ CarrierWave.configure do |config|
   #   config.root = File.join(APP_ROOT, 'public')
   #   config.store_dir = File.join('uploads')
   # else
-  #   #store on S3 or whatever (look into this for Heroku deployment)
-  #   raise "Hey you don't know what to do in production yet!"
+  #   S3 code here
   # end
 
   # Testing with S3 and fog

@@ -1,11 +1,14 @@
 # To Implement:
-# Oauth (with FB, Google, etc.)
+# Clicking on files opens them in a new tab
+# JAVASCRIPT (Login/signup page erb switches to login or signup erb depending on what was clicked)
 # User can delete recipe uploads
-# Look into file path thing Adam talked about (add '/user' route?)
-# Look into whether or not current setup will work with Heroku
-# STYLING
-# Put a message on page if user has not uploaded any recipes?
+# Along with this ^, need to figure out how to not only delete the object from the database but ALSO delete the PDF file itself (research deleting things from AWS buckets?)
 
+# STRETCH
+# User can edit uploads (name and/or filepath)
+# Oauth (with FB, Google, etc.)
+# Put a message on page if user has not uploaded any recipes?
+# User can delete account?
 
 
 # Index Route

@@ -3,7 +3,7 @@
 
 <ul>
 <% @recipes.each do |recipe| %>
-  <li><a href="<%= recipe.filepath %>" class="recipe_link"><%= recipe.name %></a></li>
+  <li><a href="<%= recipe.filepath %>" class="recipe_link" target="_blank"><%= recipe.name %></a></li>
 <% end %>
 </ul><br>
 
