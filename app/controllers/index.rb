@@ -1,3 +1,9 @@
+#really like that you used pseudocode!
+#naming and overall structure if great! 
+#you kept your logic in the right places and made some awesome routes :)
+#comments to describe your routes are really great for others as well as you...great!
+#try not to leave spaces in between code, because apparently it makes it seem like you could be missing or forgot to include something
+
 # To Implement:
 # Oauth (with FB, Google, etc.)
 # User can delete recipe uploads
@@ -5,8 +11,6 @@
 # Look into whether or not current setup will work with Heroku
 # STYLING
 # Put a message on page if user has not uploaded any recipes?
-
-
 
 # Index Route
 get '/' do
@@ -17,7 +21,7 @@ get '/' do
   else
     redirect '/login_or_signup'
   end
-
+  
 end
 
 # Login and Sign Up Routes
