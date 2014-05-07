@@ -23,6 +23,12 @@ gem 'rack-flash3'
 #CarrierWave for file uploads
 gem 'carrierwave'
 
+# Fog for AWS file uploads
+gem "fog", "~> 1.3.1"
+
+# DOTEnv for AWS access and secret keys
+gem 'dotenv'
+
 gem 'shotgun'
 
 group :test do

@@ -1,11 +1,13 @@
 <h2>Welcome back, <%= @user.username %>!</h2>
 <h3>This is your account page.</h3>
 <h3>Your Uploaded Recipes:</h3>
+
 <ul>
 <% @recipes.each do |recipe| %>
   <li><a href="<%= recipe.filepath %>"><%= recipe.name %></a></li><br>
 <% end %>
 </ul>
+
 
 <a href='/uploadrecipe'>Click here to upload a recipe file</a><br>
 <br>

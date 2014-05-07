@@ -4,6 +4,8 @@ require ::File.expand_path('../config/environment', __FILE__)
 
 # Include all of ActiveSupport's core class extensions, e.g., String#camelize
 require 'active_support/core_ext'
+require 'dotenv/tasks'
+
 
 namespace :generate do
   desc "Create an empty model in app/models, e.g., rake generate:model NAME=User"
@@ -132,3 +134,7 @@ task "console" do
 end
 
 task :default  => :spec
+
+task :mytask => :dotenv do
+    # things that require .env
+end

@@ -1,5 +1,16 @@
+# To Implement:
+# Oauth (with FB, Google, etc.)
+# User can delete recipe uploads
+# Look into file path thing Adam talked about (add '/user' route?)
+# Look into whether or not current setup will work with Heroku
+# STYLING
+# Put a message on page if user has not uploaded any recipes?
+
+
+
 # Index Route
 get '/' do
+  # session.clear
   if session[:id]
     @user = User.find(session[:id])
     redirect "/account_page/#{@user.id}"
@@ -79,9 +90,6 @@ post '/uploadrecipe' do
   @user.save!
 
   redirect '/'
-
-  # "<a href='#{@uploaded_file.filepath}'>#{@uploaded_file.filepath}</a>"
-  # THAT link works - why doesn't it work in a .each loop?
 
   
 end

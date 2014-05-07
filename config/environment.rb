@@ -26,6 +26,9 @@ require 'rack-flash'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 
+require 'dotenv'
+Dotenv.load
+
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
@@ -55,12 +58,25 @@ use Rack::Flash, :sweep => true
 
 # Configure CarrierWave
 CarrierWave.configure do |config|
-  if development?
-    config.storage = :file
-    config.root = File.join(APP_ROOT, 'public')
-    config.store_dir = File.join('uploads')
-  else
-    #store on S3 or whatever (look into this for Heroku deployment)
-    raise "Hey you don't know what to do in production yet!"
-  end
+  # if development?
+  #   config.storage = :file
+  #   config.root = File.join(APP_ROOT, 'public')
+  #   config.store_dir = File.join('uploads')
+  # else
+  #   #store on S3 or whatever (look into this for Heroku deployment)
+  #   raise "Hey you don't know what to do in production yet!"
+  # end
+
+  # Testing with S3 and fog
+  config.fog_credentials = {
+    :provider               => 'AWS',
+    :aws_access_key_id      => ENV['AWS_ACCESS_KEY'],
+    :aws_secret_access_key  => ENV['AWS_SECRET_KEY']
+    # :region                 => 'eu-west-1',
+    # :host                   => 's3.example.com',
+    # :endpoint               => 'https://s3.example.com:8080'
+  }
+  config.fog_directory  = 'reciperevealeruploads'                     # required
+  # config.fog_public     = false                                   # optional, defaults to true
+  # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
 end

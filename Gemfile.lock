@@ -25,16 +25,35 @@ GEM
       mime-types (>= 1.16)
     daemons (1.1.9)
     diff-lcs (1.2.5)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
     eventmachine (1.0.3)
+    excon (0.13.4)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     faker (1.3.0)
       i18n (~> 0.5)
+    fog (1.3.1)
+      builder
+      excon (~> 0.13.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.0.4)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5.0)
+      ruby-hmac
+    formatador (0.2.4)
     i18n (0.6.9)
     json (1.8.1)
     mime-types (2.2)
     minitest (5.3.3)
     multi_json (1.9.2)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-ssh (2.9.0)
+    nokogiri (1.5.11)
     pg (0.17.1)
     rack (1.5.2)
     rack-flash3 (1.0.5)
@@ -52,6 +71,7 @@ GEM
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.6)
+    ruby-hmac (0.4.0)
     shotgun (0.9)
       rack (>= 1.0)
     shoulda-matchers (2.6.0)
@@ -84,8 +104,10 @@ DEPENDENCIES
   activesupport
   bcrypt-ruby
   carrierwave
+  dotenv
   factory_girl
   faker
+  fog (~> 1.3.1)
   pg
   rack-flash3
   rack-test

@@ -1,6 +1,9 @@
 <h2>Upload a recipe file from your computer</h2>
 <form action='/uploadrecipe' enctype="multipart/form-data" method='post'>
-    <input type="text" name="name" placeholder="name of recipe"><br>
+    <input type="text" name="name" placeholder="name of recipe" <%= "value='#{@uploaded_file.name}'" if flash[:errors] %>>
+        <% if flash[:errors] && flash[:errors][:name] %>
+          <%= flash[:errors][:name].first %>
+        <% end %><br>
     <input type="file" name="upload"><br>
     <button type="submit">Upload Your Recipe!</button>
 </form>
