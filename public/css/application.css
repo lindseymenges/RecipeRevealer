@@ -1,0 +1,45 @@
+.header {
+  font-size: 250%;
+}
+
+.container, .header {
+  margin: 20px auto;
+  width: 600px;
+  padding: 20px 20px 20px 20px;
+  border: 1px solid black;
+  text-align: center;
+  background-image: url('images/wood_background.png');
+}
+
+.login_link, .signup_link, .upload_link, .logout_link, .account_link, .upload_link, .file_selector_link, .homepage_link, .signup_link {
+  text-decoration: none;
+  background-color: #F5D0A9;
+  position: relative;
+  margin: 1%;
+  border: 1px solid brown;
+  padding: 1%;
+  color: brown;
+}
+
+.recipe_link, ul {
+  text-decoration: none;
+  list-style-type: none;
+  color: brown;
+}
+
+body {
+  color: #FAAC58;
+}
+
+li {
+  margin: 1%;
+  padding: 1%;
+  background-color: #F5D0A9;
+  font-size: 120%;
+}
+
+h2 {
+  background-color: #F5D0A9;
+  color: brown;
+}
+

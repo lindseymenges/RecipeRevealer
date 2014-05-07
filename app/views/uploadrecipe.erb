@@ -1,9 +1,9 @@
-<h2>Upload a recipe file from your computer</h2>
+<h1>Upload Your Recipe File Here</h1>
 <h4>Note: Be SURE to include a recipe name, otherwise your PDF won't save correctly!</h4>
 <form action='/uploadrecipe' enctype="multipart/form-data" method='post'>
-    Recipe Name: <input type="text" name="name" placeholder="name of recipe"><br>
-    Recipe File: <input type="file" name="upload"><br>
-    <input type='submit' value='Upload Your Recipe!'>
-</form>
+    <h2>Recipe Name:</h2> <input type="text" name="name" placeholder="name of recipe"><br>
+    <h2>Recipe File:</h2> <input type="file" name="upload" class="file_selector_link"><br>
+    <input type='submit' value='Upload Your Recipe!' class="upload_link">
+</form><br>
 
-<a href='/'>Return to Account Page</a>
+<a href='/' class="account_link">Return to Account Page</a>
