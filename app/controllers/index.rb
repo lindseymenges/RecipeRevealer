@@ -1,5 +1,6 @@
 # To Implement:
-# JAVASCRIPT (Login/signup page erb switches to login or signup erb depending on what was clicked [DONE], append upload_recipe erb upon upload click)
+# Add a condition / error message if user puts in wrong username/password?
+# Ask about adding validations after the fact
 # User can delete recipe uploads
 # Along with this ^, need to figure out how to not only delete the object from the database but ALSO delete the PDF file itself (research deleting things from AWS buckets?)
 
@@ -66,9 +67,7 @@ end
 get '/account_page/:id' do
   if session[:id].to_s == params[:id].to_s
     @user = User.find(params[:id])
-    @recipes = Upload.where(user_id: @user.id)
-    @recipe = @recipes.first
-    p @recipe
+    @recipes = Upload.where(user_id: @user.id).sort{ |a, b| a.name.downcase <=> b.name.downcase }
     erb :account_page
   else
     redirect '/'
@@ -77,13 +76,15 @@ end
 
 # Routes for uploading a new recipe
 get '/uploadrecipe' do 
-  erb :uploadrecipe
+  erb :_uploadrecipe, layout: false
 end
 
 post '/uploadrecipe' do
   @user = User.find(session[:id])
   @uploaded_file = Upload.new(filepath: params[:upload], name: params[:name])
   @uploaded_file.user_id = @user.id
+  ### validation for including a recipe name not currently working, will try to get that functional after basic MVP
+
   # if @uploaded_file.save
   #   redirect "/account_page/#{@user.id}"
   # else
@@ -91,7 +92,6 @@ post '/uploadrecipe' do
   #   erb :uploadrecipe
   # end
 
-  ### validation for including a recipe name not currently working, will try to get that functional after basic MVP
   @uploaded_file.save!
 
   redirect '/' 

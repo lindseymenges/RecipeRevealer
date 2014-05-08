@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('.container').on('click', '.login_link', getLoginPartial)
   $('.container').on('click', '.signup_link', getSignupPartial)
-
+  $('.container').on('click', '.upload_link', getUploadPartial)
 });
 
 var getLoginPartial = function(event) {
@@ -31,3 +31,18 @@ var replacingHomeWithSignup = function(signupForm) {
   $('.container').empty()
   $('.container').append(signupForm)
 }
+
+var getUploadPartial = function(event) {
+  event.preventDefault()
+  var retrievingUploadPartial = $.ajax({
+    url: '/uploadrecipe',
+    type: 'GET'
+  })
+  retrievingUploadPartial.done(appendUploadPartial)
+}
+
+var appendUploadPartial = function(uploadForm) {
+  $('.upload').empty()
+  $('.upload').append(uploadForm) 
+}
+

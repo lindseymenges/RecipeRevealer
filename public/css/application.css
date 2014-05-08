@@ -12,7 +12,7 @@
 }
 
 /*SO UGLY - REDO THIS NONSENSE*/
-.login_link, .signup_link, .upload_link, .logout_link, .account_link, .file_selector_link, .homepage_link, .log_in, .sign_up {
+.login_link, .signup_link, .upload_link, .logout_link, .account_link, .file_selector_link, .homepage_link, .log_in, .sign_up, .upload {
   text-decoration: none;
   background-color: #F5D0A9;
   position: relative;
