@@ -1,6 +1,5 @@
 # To Implement:
-# Clicking on files opens them in a new tab
-# JAVASCRIPT (Login/signup page erb switches to login or signup erb depending on what was clicked)
+# JAVASCRIPT (Login/signup page erb switches to login or signup erb depending on what was clicked [DONE], append upload_recipe erb upon upload click)
 # User can delete recipe uploads
 # Along with this ^, need to figure out how to not only delete the object from the database but ALSO delete the PDF file itself (research deleting things from AWS buckets?)
 
@@ -18,18 +17,17 @@ get '/' do
     @user = User.find(session[:id])
     redirect "/account_page/#{@user.id}"
   else
-    redirect '/login_or_signup'
+    redirect '/homepage'
   end
-
 end
 
 # Login and Sign Up Routes
-get '/login_or_signup' do 
-  erb :login_or_signup
+get '/homepage' do 
+  erb :homepage
 end
 
 get '/login' do
-  erb :login
+  erb :_login, layout: false
 end
 
 post '/login' do
@@ -44,8 +42,8 @@ post '/login' do
   end
 end
 
-get '/signup/newuser' do
-  erb :signup
+get '/signup' do
+  erb :_signup, layout: false
 end
 
 post '/signup' do
@@ -65,7 +63,6 @@ get '/logout' do
 end
 
 # Account Page Route
-
 get '/account_page/:id' do
   if session[:id].to_s == params[:id].to_s
     @user = User.find(params[:id])
@@ -78,11 +75,7 @@ get '/account_page/:id' do
   end
 end
 
-
-
-
 # Routes for uploading a new recipe
-
 get '/uploadrecipe' do 
   erb :uploadrecipe
 end
@@ -98,12 +91,10 @@ post '/uploadrecipe' do
   #   erb :uploadrecipe
   # end
 
-  # validation for including a recipe name not currently working, will try to get that functional after basic MVP
+  ### validation for including a recipe name not currently working, will try to get that functional after basic MVP
   @uploaded_file.save!
 
-  redirect '/'
-
-  
+  redirect '/' 
 end
 
 
