@@ -58,11 +58,11 @@ use Rack::Flash, :sweep => true
 
 # Configure CarrierWave
 CarrierWave.configure do |config|
-  if development?
-    config.storage = :file
-    config.root = File.join(APP_ROOT, 'public')
-    config.store_dir = File.join('uploads')
-  else
+  # if development?
+  #   config.storage = :file
+  #   config.root = File.join(APP_ROOT, 'public')
+  #   config.store_dir = File.join('uploads')
+  # else
   #   S3 code here
   config.fog_credentials = {
     :provider               => 'AWS',
@@ -73,7 +73,7 @@ CarrierWave.configure do |config|
     # :endpoint               => 'https://s3.example.com:8080'
   }
   config.fog_directory  = 'reciperevealeruploads'
-  end
+  # end
 
   # Testing with S3 and fog
   # config.fog_public     = false                                   # optional, defaults to true

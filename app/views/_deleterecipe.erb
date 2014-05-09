@@ -1,0 +1,5 @@
+<h3>Are you sure you want to delete '<%= @recipe.name%>'?</h3>
+  <form action="/deleterecipe/<%= @recipe.id %>" method="post">
+    <input type="submit" value="Yes I'm sure">
+  </form>
+  <a href='/'>No, take me back</a>

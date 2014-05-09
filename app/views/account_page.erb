@@ -5,9 +5,17 @@
 <ul>
 <% @recipes.each do |recipe| %>
   <li><a href="<%= recipe.filepath %>" class="recipe_link" target="_blank"><%= recipe.name %></a></li>
+  <li><a href="/deleterecipe/<%=recipe.id%>">Delete '<%= recipe.name %>' </a></li>
 <% end %>
 </ul><br>
 
 <div class="upload">
 <a href='/uploadrecipe' class="upload_link">Click here to upload a recipe file</a>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<a href="/deleteaccount/<%=@user.id%>"><h6>Click here to delete your account</h6></a>

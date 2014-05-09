@@ -1,0 +1,7 @@
+<h1>Are you sure you want to delete your account, <%= @user.username%>?</h1>
+<h3>Doing so will not only delete your account but also all of the files that you've uploaded to our database.</h3>
+
+<form action="/deleteaccount/<%=@user.id%>" method='post'>
+  <input type="submit" value="Yes I'm sure, delete my account and all of my files">
+</form>
+<a href='/'>No, take me back to my account page</a>
