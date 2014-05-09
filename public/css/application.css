@@ -1,5 +1,3 @@
-/* MAKE CLASSES FOR page links and confirmation buttons*/
-
 .header {
   font-size: 250%;
 }
@@ -8,14 +6,17 @@
   margin: 20px auto;
   width: 600px;
   padding: 20px 20px 20px 20px;
-  border: 1px solid black;
+  border: 1px solid brown;
   text-align: center;
   background-image: url('images/wood_background.png');
 }
 
-/*SO UGLY - REDO THIS NONSENSE*/
-.login_link, .signup_link, .upload_link, .logout_link, .account_link, .file_selector_link, .homepage_link, .log_in, .sign_up, .upload {
+a {
   text-decoration: none;
+}
+
+.route_link {
+  /*text-decoration: none;*/
   background-color: #F5D0A9;
   position: relative;
   margin: 1%;
@@ -24,10 +25,20 @@
   color: brown;
 }
 
+.command_link {
+  background-color: brown;
+  position: relative;
+  margin: 1%;
+  border: 1px solid #F5D0A9;
+  padding: 1%;
+  color: #F5D0A9;
+}
+
 .recipe_link, ul {
   text-decoration: none;
   list-style-type: none;
   color: brown;
+  background-color: #F5D0A9;
 }
 
 body {
@@ -35,14 +46,20 @@ body {
 }
 
 li {
-  margin: 1%;
-  padding: 1%;
-  background-color: #F5D0A9;
   font-size: 120%;
 }
 
-h2 {
+h1, h2, h3, h4, h5, h6 {
   background-color: #F5D0A9;
   color: brown;
+}
+
+.file_selector_link {
+  color: brown;
+}
+
+.intro_info {
+  border: 1px solid brown;
+  padding: 1%;
 }
 

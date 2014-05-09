@@ -1,16 +1,3 @@
-# To Implement:
-# On heroku, upload button isn't getting styled properly
-# Add a condition / error message if user puts in wrong username/password?
-### Ask about adding validations after the fact
-# User can delete recipe uploads
-# Along with this ^, need to figure out how to not only delete the object from the database but ALSO delete the PDF file itself (research deleting things from AWS buckets?)
-# .destroy() MIGHT take care of it, need to confirm
-
-# STRETCH
-# User can edit uploads (name and/or filepath)
-# User can delete account?
-
-
 # Index Route
 get '/' do
   # session.clear
@@ -30,23 +17,41 @@ end
 get '/login' do
   erb :_login, layout: false
 end
-
 post '/login' do
   @user = User.find_by_username(params[:username])
   if @user == nil
-    redirect '/signup'
+    redirect '/new_account'
   elsif @user.password == params[:password]
     session[:id] = @user.id
     redirect "/account_page/#{@user.id}"
   else
-    redirect '/login'
+    redirect '/loginfail'
   end
 end
+
+get '/loginfail' do
+  erb :_loginfail
+end
+post '/loginfail' do
+  @user = User.find_by_username(params[:username])
+  if @user == nil
+    redirect '/new_account'
+  elsif @user.password == params[:password]
+    session[:id] = @user.id
+    redirect "/account_page/#{@user.id}"
+  else
+    redirect '/loginfail'
+  end
+end
+
+get '/new_account' do
+  erb :_new_account
+end
+
 
 get '/signup' do
   erb :_signup, layout: false
 end
-
 post '/signup' do
   @user = User.new(params)
   if @user.save
@@ -78,7 +83,6 @@ end
 get '/uploadrecipe' do 
   erb :_uploadrecipe, layout: false
 end
-
 post '/uploadrecipe' do
   @user = User.find(session[:id])
   @uploaded_file = Upload.new(filepath: params[:upload], name: params[:name])
@@ -87,13 +91,11 @@ post '/uploadrecipe' do
   redirect '/' 
 end
 
-
 # Routes for deleting a recipe
 get '/deleterecipe/:id' do
   @recipe = Upload.find(params[:id])
   erb :_deleterecipe
 end
-
 post '/deleterecipe/:id' do
   @recipe = Upload.find(params[:id])
   @recipe.destroy
@@ -105,7 +107,6 @@ get '/deleteaccount/:id' do
   @user = User.find(params[:id])
   erb :_deleteaccount
 end
-
 post '/deleteaccount/:id' do
   @recipes = Upload.where(user_id: params[:id])
   @recipes.each do |recipe|
